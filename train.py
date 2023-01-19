@@ -131,9 +131,7 @@ def run_training():
             optimizer.zero_grad()
             imgs = imgs.cuda()
             embeddings, outputs = model(imgs)
-
             targets = targets.cuda()
-
             alpha = args.alpha
             drdm_loss = DRDM_loss(embeddings, targets)
             CE_loss = CE_criterion(outputs, targets)
@@ -171,12 +169,10 @@ def run_training():
             for batch_i, (imgs, targets) in enumerate(val_loader):
                 embeddings, outputs = model(imgs.cuda())
                 targets = targets.cuda()
-
                 alpha = args.alpha
                 drdm_loss = DRDM_loss(embeddings, targets)
                 CE_loss = CE_criterion(outputs, targets)
                 loss = (1 - alpha) * CE_loss + alpha * drdm_loss
-
                 val_loss += loss
                 val_drdmloss += drdm_loss
                 val_celoss += CE_loss
