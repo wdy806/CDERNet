@@ -13,13 +13,10 @@ class ResNet18_for_embedding(nn.Module):
 
     def forward(self, x):
         x = self.features(x)
-
         if self.drop_rate > 0:
             x = nn.Dropout(self.drop_rate)(x)
-
         x = x.view(x.size(0), -1)
         out = self.fc(x)
-
         return out
 
 
@@ -48,9 +45,7 @@ class CDERNet(nn.Module):
 
     def forward(self, x):
         x = self.resnet18_for_embedding(x)
-
         out = self.fcnet(x)
-
         return x, out
 
 
