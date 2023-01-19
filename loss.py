@@ -34,7 +34,6 @@ def calculate_dist(vector1, vector2):
 def KL_loss(outputs, targets):
     batchsize = outputs.size(0)
     assert batchsize == targets.size(0)
-
     count = 0
     distance = 0.0
     for i in range(batchsize):
@@ -52,7 +51,6 @@ def KL_loss(outputs, targets):
 def L1_loss(outputs, targets, mode='dist'):
     batchsize = outputs.size(0)
     assert batchsize == targets.size(0)
-
     count = 0
     distance = 0.0
     for i in range(batchsize):
@@ -73,7 +71,6 @@ def L1_loss(outputs, targets, mode='dist'):
 def ratio_loss(outputs, targets):
     batchsize = outputs.size(0)
     assert batchsize == targets.size(0)
-
     embedding_shape = outputs.size()[1:]
     feature_count = [0, 0, 0]
     loss_count = [0, 0, 0]
@@ -88,13 +85,11 @@ def ratio_loss(outputs, targets):
             if (targets[j] == tar):
                 loss_count[tar] = loss_count[tar] + 1
                 distance[tar] = distance[tar] + calculate_dist(outputs[i], outputs[j])
-
     for i in range(3):
         if (feature_count[i] == 0):
             feature_count[i] = 1
         if (loss_count[i] == 0):
             loss_count[i] = 1
-
     inner_distance = distance[0] / loss_count[0] + distance[1] / loss_count[1] + distance[2] / loss_count[2]
     average = [sum[0] / feature_count[0], sum[1] / feature_count[1], sum[2] / feature_count[2]]
     inter_distance = calculate_dist(average[0], average[1]) + calculate_dist(average[0], average[2]) + calculate_dist(average[1], average[2])
