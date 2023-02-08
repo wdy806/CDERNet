@@ -1,6 +1,6 @@
 # CDERNet
 
-This is the Pytorch implementation of CDERNet proposed in paper 'DERNet: Driver Emotion Recognition Using On-board Camera' by Dingyu Wang, Shaocheng Jia and Xin Pei.
+This is the Pytorch implementation of CDERNet proposed in paper 'DERNet: Driver Emotion Recognition Using On-board Camera' by Dingyu Wang, Shaocheng Jia, Xin Pei, Chunyang Han and Danya Yao.
 
 # Overview
 
