@@ -25,14 +25,34 @@ face-recognition 1.3.0
 scikit-image 0.17.2  
 scikit-learn 0.23.2
 
-# Train
+# Quick Start
 
 ## Data Preparation
 
+Download DEFE dataset, and make sure it have a structure like following (the first character of file name represents its label):
+
+```
+-datasets/DEFE/raw_data/
+  train/
+    0-xxx.jpg
+    1-xxx.jpg
+    2-xxx.jpg
+    ...
+  test/
+    0-xxx.jpg
+    1-xxx.jpg
+    2-xxx.jpg
+    ...
+```
+
 ## Data Preprocessing
+
+```
+python facedetection.py
+```
 
 ## Training
 
-## Testing
-
-# Citation
+```
+train.py --embedding_size 256 --alpha 0.7
+```
